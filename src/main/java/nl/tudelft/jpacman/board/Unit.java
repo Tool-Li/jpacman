@@ -65,10 +65,11 @@ public abstract class Unit {
 
     /**
      * Occupies the target square iff this unit is allowed to as decided by
+     * 如果该单位被允许作为占领目标方
      * {@link Square#isAccessibleTo(Unit)}.
      *
      * @param target
-     *            The square to occupy.
+     *            The square to occupy.占领方格
      */
     public void occupy(Square target) {
         assert target != null;
@@ -83,6 +84,7 @@ public abstract class Unit {
 
     /**
      * Leaves the currently occupying square, thus removing this unit from the board.
+     * 离开当前占用的方块，从而将该单元从棋盘上移除。
      */
     public void leaveSquare() {
         if (square != null) {

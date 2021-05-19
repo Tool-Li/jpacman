@@ -1,9 +1,9 @@
 plugins {
     id 'application'
     id 'java'
-    id 'jacoco'
     id 'checkstyle'
     id 'pmd'
+    id 'jacoco'
     id 'com.github.spotbugs' version '1.7.1'
 }
 
@@ -95,5 +95,7 @@ task staticAnalysis(type: GradleBuild) {
         'spotbugsDefaultTest',
     ]
 }
-
+tasks.withType(JavaCompile){
+    options.encoding="UTF-8"
+}
 mainClassName = 'nl.tudelft.jpacman.Launcher'
