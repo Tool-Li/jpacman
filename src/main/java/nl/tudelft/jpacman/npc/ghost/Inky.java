@@ -31,7 +31,7 @@ import java.util.Optional;
  *
  * @author Jeroen Roosen
  */
-public class Inky extends Ghost {
+public class  Inky extends Ghost {
 
     private static final int SQUARES_AHEAD = 2;
 

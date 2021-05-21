@@ -12,6 +12,7 @@ import java.util.List;
  * A test helper utility for writing the ghost unit tests.
  * A useful method for retrieving ghosts from your map would be:
  * findUnitInBoard in the Navigation class.
+ * *Atest帮助实用程序编写ghost单元测试。在导航类中的findUnitInBoard是一个有用的方法。
  */
 public final class GhostMapParser extends MapParser {
     private final GhostFactory ghostFactory;
@@ -33,12 +34,19 @@ public final class GhostMapParser extends MapParser {
 
     //This method only supports clyde for now
     //You should add extra cases for ghosts you need.
+    //实例化Clyde对象
     @Override
     protected void addSquare(Square[][] grid, List<Ghost> ghosts,
                              List<Square> startPositions, int x, int y, char c) {
         switch (c) {
             case 'C':
                 grid[x][y] = makeGhostSquare(ghosts, ghostFactory.createClyde());
+                break;
+            case 'I':
+                grid[x][y] = makeGhostSquare(ghosts, ghostFactory.createInky());
+                break;
+            case 'B':
+                grid[x][y] = makeGhostSquare(ghosts, ghostFactory.createBlinky());
                 break;
             default:
                 super.addSquare(grid, ghosts, startPositions, x, y, c);

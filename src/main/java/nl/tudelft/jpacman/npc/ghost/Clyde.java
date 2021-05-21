@@ -15,19 +15,27 @@ import nl.tudelft.jpacman.sprite.Sprite;
 /**
  * <p>
  * An implementation of the classic Pac-Man ghost Clyde.
+ * 经典的《吃豆人》幽灵Clyde的实现。
  * </p>
  * <p>
  * Pokey needs a new nickname because out of all the ghosts,
- * Clyde is the least likely to "C'lyde" with Pac-Man. Clyde is always the last
+ *  Pokey需要一个新绰号，因为在所有的鬼魂中，
+ * Clyde is the least likely to "C'lyde" with Pac-Man.
+ * Clyde是《吃豆人》中最不可能出现的“C’lyde”。
+ *
+ * Clyde is always the last
  * ghost out of the regenerator, and the loner of the gang, usually off doing
  * his own thing when not patrolling the bottom-left corner of the maze. His
  * behavior is very random, so while he's not likely to be following you in hot
  * pursuit with the other ghosts, he is a little less predictable, and still a
  * danger.
+ * 克莱德总是扎斯特鬼出再生器，以及团伙中的孤独者，
+ * 通常在不巡逻迷宫左下角的时候做自己的事情。他的行为是非常随机的，
+ * 所以虽然他不太可能跟在你后面跟其他鬼，但他有点难以预测，仍然是一个危险。
  * </p>
  * <p>
  * <b>AI:</b> Clyde has two basic AIs, one for when he's far from Pac-Man, and
- * one for when he is near to Pac-Man. 
+ * one for when he is near to Pac-Man. 一个远离豆子一个接近豆子
  * When Clyde is far away from Pac-Man (beyond eight grid spaces),
  * Clyde behaves very much like Blinky, trying to move to Pac-Man's exact
  * location. However, when Clyde gets within eight grid spaces of Pac-Man, he
@@ -91,6 +99,8 @@ public class Clyde extends Ghost {
      * </p>
      */
     @Override
+
+    //nextAiMove()方法，考虑测试用例以确保Clyde按预期行为工作。
     public Optional<Direction> nextAiMove() {
         assert hasSquare();
 
