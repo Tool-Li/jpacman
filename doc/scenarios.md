@@ -36,7 +36,7 @@ JPacman is a very simple JPacman derivative, to be used for educational purposes
 
 The JPacman game is played on a rectangular board.  A square on the board can be empty, or can contain the Pacman itself, one of the several ghosts, a pellet (worth 10 points), or a wall. Moveable characters such as the Pacman and the ghosts can make single-step horizontal or vertical moves.  Tunnels on the border make it possible to move from one border to the opposite border.  When the Pacman moves over a square containing a pellet, the player earns points and the pellet disappears. If a player and a ghost meet at the same square, the the game is over. The player wins the game once he or she has eaten all pellets.
 
-
+日本吃豆人游戏是在一个长方形的棋盘上玩的。棋盘上的方块可以是空的，也可以包含吃豆人本身、几个幽灵中的一个、一个球(价值10点)或一堵墙。可移动的角色，如吃豆人和幽灵可以进行单步水平或垂直移动。边境上的隧道使人们可以从一条边境移动到另一条边境。当吃豆人移动到一个含有小球的方格时，玩家就会获得点数，小球就会消失。如果玩家和鬼魂在同一个方格相遇，游戏就结束了。玩家吃完所有的食物就赢得了游戏。
 ## 3. User Stories
 
 #### Story 1: Startup
@@ -51,7 +51,7 @@ Given the user has launched the JPacman GUI;
 When  the user presses the "Start" button;
 Then  the game should start.
 ```
-
+作为一个玩家我想开始游戏，这样我就能真正地玩了场景s1.1:开始。假设用户已经启动了JPacman GUI;当用户按下“开始”按钮时;然后游戏就应该开始了。
 
 #### Story 2: Move the Player
 
@@ -74,7 +74,7 @@ Given the game has started,
 When  I press an arrow key towards that square;
 Then  my Pacman can move to that square
  and  my points remain the same.
-
+作为一个球员,我想在棋盘上移动吃豆人;这样我就能赢得所有的分数并赢得比赛场景s2.1:玩家消费既然比赛已经开始了和我的吃豆人就在一个含有小球的方块旁边;当我向那个正方形按下方向键然后我的吃豆人可以移动到那个方块，我可以通过吃小球来获得分数小球从那个方块上消失了。场景s2.2:玩家向空方格移动我的吃豆人就在一个空的方块旁边;当我按下那个方块的方向键，我的吃豆人就可以移动到那个方块我的观点是一样的。
 Scenario S2.3: The move fails
 Given the game has started,
   and my Pacman is next to a cell containing a wall;

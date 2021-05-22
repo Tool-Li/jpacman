@@ -88,14 +88,14 @@ public class  Inky extends Ghost {
         Unit player = Navigation.findNearest(Player.class, getSquare());
 
         if (blinky == null || player == null) {
-            return Optional.empty();
+            return Optional.empty();//player对象或blinky对象为空是返回空
         }
 
         assert player.hasSquare();
         Square playerDestination = player.squaresAheadOf(SQUARES_AHEAD);
 
         List<Direction> firstHalf = Navigation.shortestPath(blinky.getSquare(),
-            playerDestination, null);
+            playerDestination, null);//在player对象前两个位置和blinky对象之间没有路径
 
         if (firstHalf == null) {
             return Optional.empty();
@@ -106,9 +106,9 @@ public class  Inky extends Ghost {
             destination, this);
 
         if (path != null && !path.isEmpty()) {
-            return Optional.ofNullable(path.get(0));
+            return Optional.ofNullable(path.get(0)); //两者之间存在合适路径
         }
-        return Optional.empty();
+        return Optional.empty();//Inky对象和blinky对象和player三个对象前两格形成的路径之间无可达路径
     }
 
 

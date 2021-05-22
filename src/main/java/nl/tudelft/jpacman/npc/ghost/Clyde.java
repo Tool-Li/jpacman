@@ -69,7 +69,6 @@ public class Clyde extends Ghost {
      * A map of opposite directions.
      */
     private static final Map<Direction, Direction> OPPOSITES = new EnumMap<>(Direction.class);
-
     static {
         OPPOSITES.put(Direction.NORTH, Direction.SOUTH);
         OPPOSITES.put(Direction.SOUTH, Direction.NORTH);
@@ -106,7 +105,7 @@ public class Clyde extends Ghost {
 
         Unit nearest = Navigation.findNearest(Player.class, getSquare());
         if (nearest == null) {
-            return Optional.empty();
+            return Optional.empty(); //无player对象
         }
         assert nearest.hasSquare();
         Square target = nearest.getSquare();
@@ -117,8 +116,8 @@ public class Clyde extends Ghost {
             if (path.size() <= SHYNESS) {
                 return Optional.ofNullable(OPPOSITES.get(direction));
             }
-            return Optional.of(direction);
+            return Optional.of(direction); //距离大于8
         }
-        return Optional.empty();
+        return Optional.empty();//没有路径
     }
 }
