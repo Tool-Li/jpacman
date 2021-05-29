@@ -43,7 +43,7 @@ public abstract class Game implements LevelObserver {
     }
 
     /**
-     * Starts or resumes the game.
+     * Starts or resumes the game.//开始/重新游戏
      */
     public void start() {
         synchronized (progressLock) {
@@ -59,7 +59,7 @@ public abstract class Game implements LevelObserver {
     }
 
     /**
-     * Pauses the game.
+     * Pauses the game.//游戏暂停
      */
     public void stop() {
         synchronized (progressLock) {

@@ -74,7 +74,7 @@ Given the game has started,
 When  I press an arrow key towards that square;
 Then  my Pacman can move to that square
  and  my points remain the same.
-作为一个球员,我想在棋盘上移动吃豆人;这样我就能赢得所有的分数并赢得比赛场景s2.1:玩家消费既然比赛已经开始了和我的吃豆人就在一个含有小球的方块旁边;当我向那个正方形按下方向键然后我的吃豆人可以移动到那个方块，我可以通过吃小球来获得分数小球从那个方块上消失了。场景s2.2:玩家向空方格移动我的吃豆人就在一个空的方块旁边;当我按下那个方块的方向键，我的吃豆人就可以移动到那个方块我的观点是一样的。
+作的吃豆人就在一个含有小球的方块旁边;当我向那个正方形按下方向键然后我的吃豆人可以移动到那个方块，我可以通过吃小球来获得分数小球从那个方块上消失了。场景s2.2:玩家向空方格移动我的吃豆人就在一个空的方块旁边;当我按下那个方块的方向键，我的吃豆人就可以移动到那个方块我的观点是一样的。
 Scenario S2.3: The move fails
 Given the game has started,
   and my Pacman is next to a cell containing a wall;
@@ -128,7 +128,7 @@ Then  the ghost can move to the player,
 ```
 
 #### Story 4: Suspend the Game
-
+暂停游戏
 ```
 As a player,
  I want to be able to suspend the game;
@@ -138,11 +138,13 @@ Scenario S4.1: Suspend the game.
 Given the game has started;
 When  the player clicks the "Stop" button;
 Then  all moves from ghosts and the player are suspended.
+当游戏运行的时候按下停止，游戏就会暂停
 
 Scenario S4.2: Restart the game.
 Given the game is suspended;
 When  the player hits the "Start" button;
 Then  the game is resumed.
+当游戏暂定时，按下“开始”按键，游戏继续运行
 ```
 
 ## 3. User Interface

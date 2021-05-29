@@ -9,19 +9,20 @@ import org.mockito.Mockito;
 
 /**
  * 用于实现CollisionMap接口的类的测试。
- * 定义了抽象类CollisionMapTest，它的子类是PlayerCollisionsTest
- * 和DefaultPlayerInteractionMapTest。方便两个子类调用
+ * 定义了抽象类CollisionMapTest，它的子类是PlayerCollisionsTest。
+ * 和DefaultPlayerInteractionMapTest。方便两个子类调用。
  */
+@SuppressWarnings("checkstyle:Indentation")
 public abstract class CollisionMapTest {
     private PointCalculator pointCalculator; //分数计算器
     private Player player;
     private Pellet pellet;
     private Ghost ghost;
-    private CollisionMap playerCollisions;//collsionMap是一个接口
+    private CollisionMap playerCollisions; //collsionMap是一个接口
 
 
     /**
-     *分数计算器构造函数
+     *分数计算器构造函数。
      */
     public void setPointCalculator(PointCalculator pointCalculator) {
         this.pointCalculator = pointCalculator;
@@ -171,13 +172,16 @@ public abstract class CollisionMapTest {
     void testGhostGhost() {
         Ghost ghost1 = Mockito.mock(Ghost.class);
         playerCollisions.collide(ghost, ghost1);
-
+        //查询没有交互的mock对象 用来确认mock2对象没有进行任何交互，
+        // 但mock2执行了get(0)方法，所以这里测试会报错。
+        // 由于它和verifyNoMoreInteractions()方法实现的源码都一样，
+        // 因此如果在verifyZeroInteractions(mock2)执行之前对mock.get(0)进行了验证那么测试将会通过。
         Mockito.verifyZeroInteractions(ghost, ghost1);
     }
 
 
     /**
-     * 测试碰撞方法中第一个参数是小球，第二参数是玩家
+     * 测试碰撞方法中第一个参数是小球，第二参数是玩家。
      */
     @Test
     @DisplayName("7.测试碰撞方法中第一个参数是小球，第二参数是玩家")
