@@ -1,9 +1,10 @@
 plugins {
     id 'application'
     id 'java'
+    id 'jacoco'
     id 'checkstyle'
     id 'pmd'
-    id 'jacoco'
+
     id 'com.github.spotbugs' version '1.7.1'
 }
 
@@ -22,10 +23,17 @@ configurations {
     defaultTestCompile.extendsFrom testCompile
     defaultTestImplementation.extendsFrom testImplementation
     defaultTestRuntime.extendsFrom testRuntime
+
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
 }
 
 repositories {
-    mavenCentral()
+    // mavenCentral()
+    google()
+    jcenter()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
 }
 
 dependencies {
@@ -36,6 +44,13 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
     testCompile "org.mockito:mockito-core:$mockitoVersion"
     testCompile "org.assertj:assertj-core:$assertjVersion"
+
+//    testCompile 'io.cucumber:cucumber-java8:5.6.0'
+//    testCompile 'io.cucumber:cucumber-junit:5.6.0'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
+    compile group: 'io.cucumber', name: 'cucumber-java', version: '6.0.0-RC2'
+
 }
 
 task defaultTest(type: Test) {
@@ -83,19 +98,30 @@ tasks.withType(com.github.spotbugs.SpotBugsTask) {
 
 task staticAnalysis(type: GradleBuild) {
     tasks = [
-        'clean',
-        'checkstyleMain',
-        'checkstyleTest',
-        'checkstyleDefaultTest',
-        'pmdMain',
-        'pmdTest',
-        'pmdDefaultTest',
-        'spotbugsMain',
-        'spotbugsTest',
-        'spotbugsDefaultTest',
+            'clean',
+            'checkstyleMain',
+            'checkstyleTest',
+            'checkstyleDefaultTest',
+            'pmdMain',
+            'pmdTest',
+            'pmdDefaultTest',
+            'spotbugsMain',
+            'spotbugsTest',
+            'spotbugsDefaultTest',
     ]
 }
-tasks.withType(JavaCompile){
-    options.encoding="UTF-8"
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin' ,'html:target/cucumber-reports/html','--glue','nl.tudelft.jpacman.cucumber', 'src/test/resources/']
+
+        }
+    }
 }
+
+
 mainClassName = 'nl.tudelft.jpacman.Launcher'

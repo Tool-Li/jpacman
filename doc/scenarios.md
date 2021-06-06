@@ -102,7 +102,7 @@ So that I can try to kill the player.
 
 Scenario S3.1: A ghost moves.
 Given the game has started,
- and  a ghost is next to an empty cell;
+and  a ghost is next to an empty cell;
 When  a tick event occurs;
 Then  the ghost can move to that cell.
 
